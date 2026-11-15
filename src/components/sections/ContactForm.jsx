@@ -83,22 +83,26 @@ export default function ContactForm() {
     // Honeypot: silently ignore bots
     if (values.company_website) return
 
-    if (!formConfig.endpoint) {
+    // Not configured (or Web3Forms without its access key) → offer WhatsApp instead
+    if (!formConfig.endpoint || (/web3forms\.com/.test(formConfig.endpoint) && !formConfig.accessKey)) {
       setStatus('unconfigured')
       return
     }
 
     setStatus('submitting')
     try {
+      const email = values.email.trim()
+      const subject = `New website inquiry: ${values.service} (${values.name.trim()})`
+      const isWeb3Forms = /web3forms\.com/.test(formConfig.endpoint)
+      // Field names understood by Web3Forms and Formspree (both send these to the owner's inbox)
       const payload = {
-        name: values.name.trim(),
-        phone: values.phone.trim(),
-        email: values.email.trim(),
-        service: values.service,
-        message: values.details.trim(),
-        subject: `Website inquiry — ${values.service}`,
-        from_name: 'Vidhi Industries Website',
-        ...(formConfig.accessKey ? { access_key: formConfig.accessKey } : {}),
+        ...(isWeb3Forms ? { access_key: formConfig.accessKey, subject, from_name: 'Vidhi Industries Website' } : { _subject: subject }),
+        Name: values.name.trim(),
+        Phone: values.phone.trim(),
+        ...(email ? { email } : {}), // used as reply-to so the owner can reply directly
+        Service: values.service,
+        'Project details': values.details.trim(),
+        Page: typeof window !== 'undefined' ? window.location.href : '',
       }
       const res = await fetch(formConfig.endpoint, {
         method: 'POST',
