@@ -1,0 +1,135 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource/noto-sans-gujarati/gujarati-500.css';
+@import 'tailwindcss';
+
+@theme {
+  --color-navy: #14283f;
+  --color-navy-900: #0b1828;
+  --color-navy-800: #102136;
+  --color-navy-700: #1d3654;
+  --color-silver: #a7b0b8;
+  --color-silver-light: #d5dade;
+  --color-mist: #f3f5f7;
+  --color-accent: #e58a35;
+  --color-accent-dark: #c96f1d;
+  --color-accent-ink: #a8540f; /* orange for text on light backgrounds (AA contrast) */
+  --color-accent-hover: #ef9a4c;
+  --color-ink: #252b32;
+  --color-muted: #5b6672;
+  --color-line: #e2e6ea;
+
+  --font-sans: 'Inter Variable', 'Noto Sans Gujarati', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk Variable', 'Inter Variable', 'Noto Sans Gujarati', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(20 40 63 / 0.04), 0 8px 24px -12px rgb(20 40 63 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(20 40 63 / 0.05), 0 24px 48px -20px rgb(20 40 63 / 0.35);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-navy;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection { background: var(--color-accent); color: white; }
+}
+
+@utility container-x {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+}
+@utility section {
+  @apply py-20 sm:py-24 lg:py-28;
+}
+/* Eyebrow colour adapts: dark sections set --eyebrow via the `on-dark` utility */
+@utility eyebrow {
+  @apply inline-flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.2em];
+  color: var(--eyebrow, var(--color-accent-ink));
+  &::before {
+    content: '';
+    @apply h-px w-8;
+    background: currentColor;
+  }
+}
+@utility on-dark {
+  --eyebrow: var(--color-accent);
+}
+@utility h-section {
+  @apply text-3xl font-semibold leading-[1.1] sm:text-4xl lg:text-[2.75rem];
+}
+@utility lead {
+  @apply text-base leading-relaxed text-muted sm:text-lg;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold tracking-wide transition-all duration-200 select-none;
+}
+@utility btn-primary {
+  @apply btn bg-accent text-navy-900 shadow-[0_8px_20px_-8px_rgb(229_138_53/0.7)] hover:-translate-y-0.5 hover:bg-accent-hover;
+}
+@utility btn-navy {
+  @apply btn bg-navy text-white hover:-translate-y-0.5 hover:bg-navy-700;
+}
+@utility btn-outline-light {
+  @apply btn border border-white/30 text-white backdrop-blur-sm hover:border-white hover:bg-white/10;
+}
+@utility btn-outline {
+  @apply btn border border-navy/20 text-navy hover:border-navy hover:bg-navy hover:text-white;
+}
+@utility card {
+  @apply rounded-xl border border-line bg-white shadow-card;
+}
+@utility field {
+  @apply block w-full rounded-md border border-line bg-white px-4 py-3 text-[15px] text-ink transition placeholder:text-[#8a949e] focus:border-navy focus:ring-2 focus:ring-navy/15 focus:outline-none;
+  &[aria-invalid='true'] {
+    @apply border-red-500 focus:ring-red-500/20;
+  }
+}
+@utility grid-lines {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Reveal-on-scroll: only hides content once JS is running */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+/* transform-only entrance: keeps above-the-fold text paintable for LCP */
+@keyframes riseIn {
+  from { transform: translateY(18px); }
+  to { transform: none; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

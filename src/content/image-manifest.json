@@ -1,0 +1,162 @@
+{
+ "/images/about-workshop.webp": {
+  "w": 1600,
+  "h": 1100,
+  "sizes": [
+   640,
+   1280
+  ]
+ },
+ "/images/cta-texture.webp": {
+  "w": 2000,
+  "h": 900,
+  "sizes": [
+   640,
+   1280
+  ]
+ },
+ "/images/gallery-1.webp": {
+  "w": 1800,
+  "h": 1000,
+  "sizes": [
+   640,
+   1280
+  ]
+ },
+ "/images/gallery-2.webp": {
+  "w": 1200,
+  "h": 1000,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/gallery-3.webp": {
+  "w": 1200,
+  "h": 1000,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/gallery-4.webp": {
+  "w": 1200,
+  "h": 1000,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/gallery-5.webp": {
+  "w": 1200,
+  "h": 1000,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/gallery-6.webp": {
+  "w": 1800,
+  "h": 1000,
+  "sizes": [
+   640,
+   1280
+  ]
+ },
+ "/images/gallery-7.webp": {
+  "w": 1200,
+  "h": 1000,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/gallery-8.webp": {
+  "w": 1200,
+  "h": 1000,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/hero-workshop.webp": {
+  "w": 2400,
+  "h": 1350,
+  "sizes": [
+   640,
+   1280
+  ]
+ },
+ "/images/industry-construction.webp": {
+  "w": 1000,
+  "h": 1200,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/industry-engineering.webp": {
+  "w": 1000,
+  "h": 1200,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/industry-infrastructure.webp": {
+  "w": 1000,
+  "h": 1200,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/industry-manufacturing.webp": {
+  "w": 1000,
+  "h": 1200,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/intro-workshop.webp": {
+  "w": 1400,
+  "h": 1600,
+  "sizes": [
+   640,
+   1280
+  ]
+ },
+ "/images/service-components.webp": {
+  "w": 1200,
+  "h": 900,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/service-custom.webp": {
+  "w": 1200,
+  "h": 900,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/service-cutting.webp": {
+  "w": 1200,
+  "h": 900,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/service-fabrication.webp": {
+  "w": 1200,
+  "h": 900,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/service-structure.webp": {
+  "w": 1200,
+  "h": 900,
+  "sizes": [
+   640
+  ]
+ },
+ "/images/service-welding.webp": {
+  "w": 1200,
+  "h": 900,
+  "sizes": [
+   640
+  ]
+ }
+}
